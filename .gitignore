@@ -1,0 +1,5 @@
+*.pyc
+__pycache__/
+recording_cache
+*.nh5
+*.h5

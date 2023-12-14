@@ -1,0 +1,4 @@
+recording: "https://api.dandiarchive.org/api/assets/6864d7f3-08cf-4ae9-bf47-bf29048b7f7b/download/"
+sorting: "https://neurosift.org/dendro-outputs/4fbc4999/output"
+output: "./test.nh5"
+electrical_series_path: "/acquisition/ElectricalSeries"
