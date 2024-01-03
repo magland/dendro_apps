@@ -1,0 +1,33 @@
+name: Build spike_sorting_analysis image and push to GCR
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "spike_sorting_analysis/**"
+  workflow_dispatch:
+
+jobs:
+  publish-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build the Docker image
+        run: |
+          NAME="spike_sorting_analysis" && \
+          docker buildx build --push \
+          -t ghcr.io/magland/dendro_apps-$NAME:latest \
+          --cache-to type=inline \
+          --cache-from type=registry,ref=ghcr.io/magland/dendro_apps-$NAME:latest \
+          -f ./$NAME/Dockerfile .

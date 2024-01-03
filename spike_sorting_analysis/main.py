@@ -12,15 +12,15 @@ if TYPE_CHECKING:
 
 app = App(
     'spike_sorting_analysis',
-    description="Create a spike sorting analysis .h5 file.",
-    app_image="ghcr.io/magland/dendro_spike_sorting_analysis:latest",
+    description="Create a spike sorting analysis .nh5 file.",
+    app_image="ghcr.io/magland/dendro_apps-spike_sorting_analysis:latest",
     app_executable="/app/main.py"
 )
 
 class CreateSpikeSortingAnalysisContext(BaseModel):
     recording: InputFile = Field(description='recording .nwb file')
     sorting: InputFile = Field(description='sorting .nwb file')
-    output: OutputFile = Field(description='output .h5 file')
+    output: OutputFile = Field(description='output .nh5 file')
     electrical_series_path: str = Field(description='Path to the electrical series in the recording NWB file, e.g., /acquisition/ElectricalSeries')
 
 class CreateSpikeSortingAnalysisProcessor(ProcessorBase):

@@ -1,0 +1,51 @@
+{
+    "name": "spike_sorting_analysis",
+    "description": "Create a spike sorting analysis .nh5 file.",
+    "appImage": "ghcr.io/magland/dendro_apps-spike_sorting_analysis:latest",
+    "appExecutable": "/app/main.py",
+    "executable": "/app/main.py",
+    "processors": [
+        {
+            "name": "create_spike_sorting_analysis",
+            "description": "Create a spike sorting analysis .nh5 file.",
+            "label": "Spike sorting analysis",
+            "inputs": [
+                {
+                    "name": "recording",
+                    "description": "recording .nwb file"
+                },
+                {
+                    "name": "sorting",
+                    "description": "sorting .nwb file"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "output",
+                    "description": "output .nh5 file"
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "electrical_series_path",
+                    "description": "Path to the electrical series in the recording NWB file, e.g., /acquisition/ElectricalSeries",
+                    "type": "str"
+                }
+            ],
+            "attributes": [
+                {
+                    "name": "wip",
+                    "value": true
+                }
+            ],
+            "tags": [
+                {
+                    "tag": "spike_sorting"
+                },
+                {
+                    "tag": "spike_sorting_analysis"
+                }
+            ]
+        }
+    ]
+}
